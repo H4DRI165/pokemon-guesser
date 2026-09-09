@@ -1,75 +1,70 @@
-# React + TypeScript + Vite
+# Pokémon Stat Guesser
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A "Higher or Lower" style browser game. Two random Pokémon appear side by side;
+you pick which one has the higher stat (Attack). Correct guesses grow your
+streak; a wrong guess ends the run and shows your final score.
 
-Currently, two official plugins are available:
+Built with React + TypeScript to practise component design, custom hooks, async
+data fetching, and clean typing of external API data.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- Two random Pokémon fetched from [PokeAPI](https://pokeapi.co/) each round
+- Sprite, name, and Pokédex number shown; the stat stays hidden until you guess
+- One click to guess — both values are revealed with a correct/wrong verdict
+- Live streak + best counter
+- Game-over modal with your run's score and a **Play again** button
+- Responsive layout
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+| Layer    | Choice                             |
+|----------|------------------------------------|
+| Build    | Vite (`react-ts` template)         |
+| Language | TypeScript (strict)                |
+| UI       | React (function components + hooks)|
+| Styling  | Plain CSS (`src/index.css`)        |
+| Data     | PokeAPI (no auth / API key needed) |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Getting Started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+No environment variables or API keys are required — PokeAPI is fully public.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Scripts
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Command            | Description                     |
+|--------------------|---------------------------------|
+| `npm run dev`      | Start the Vite dev server       |
+| `npm run build`    | Type-check and build for prod   |
+| `npm run preview`  | Preview the production build    |
+| `npm run lint`     | Run ESLint                      |
+
+## Project Structure
 
 ```
+src/
+  api/
+    pokeapi.ts            // fetchPokemon(id), mapToPokemon(raw)
+  components/
+    PokemonCard.tsx       // sprite, name, stat (hidden or revealed)
+    GameBoard.tsx         // renders two cards, owns guess logic
+    StreakCounter.tsx
+    GameOverModal.tsx
+  hooks/
+    usePokemonRound.ts    // returns { pokemonA, pokemonB, loading, error, nextRound }
+  types/
+    pokemon.ts            // Pokemon interface
+  App.tsx                 // orchestrates data + score + modal
+  main.tsx
+```
+
+## Roadmap
+
+Stretch ideas tracked in [`docs/PROJECT_SPEC.md`](./docs/PROJECT_SPEC.md):
+high-score persistence via `localStorage`, randomizing the compared stat each
+round, reveal animations, difficulty modes, and sound effects.
