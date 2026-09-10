@@ -10,7 +10,11 @@ side; the player guesses which one has the higher value for a given stat
 custom hooks, async data fetching, and clean typing of external API data —
 in a small, polished, deployable project.
 
-**Live demo:** _(add link once deployed)_
+**Status:** MVP shipped (see checklist in §3). Building the static UI with the
+mockup, wiring real data, and game logic are done; the reveal already animates
+via CSS (`.card.revealed`). Remaining work is stretch goals + deployment.
+
+**Live demo:** _(add link once deployed)**
 **Repo:** _(add link once pushed)_
 **UI mockup (design reference):** [`docs/ui-mockup.html`](./ui-mockup.html) —
 open directly in a browser; a clickable preview of every game state. Replicate
@@ -34,13 +38,13 @@ its layout/theme when building the static UI.
 
 ## 3. Features
 
-### MVP (must ship)
-- [ ] Fetch two random Pokémon on load
-- [ ] Display each Pokémon's sprite, name, and (initially hidden) stat
-- [ ] Player clicks a card to guess "higher"
-- [ ] Reveal both stat values and correctness on click
-- [ ] Track and display current streak
-- [ ] Game-over state on wrong guess, with a restart button
+### MVP (must ship) — ✅ done
+- [x] Fetch two random Pokémon on load
+- [x] Display each Pokémon's sprite, name, and (initially hidden) stat
+- [x] Player clicks a card to guess "higher"
+- [x] Reveal both stat values and correctness on click
+- [x] Track and display current streak
+- [x] Game-over state on wrong guess, with a restart button
 
 ### Stretch goals (pick 2–3 after MVP works)
 - [ ] Persist high score in `localStorage`
@@ -130,19 +134,24 @@ No environment variables or API keys needed — PokeAPI is fully public.
 
 ## 7. Build Order
 
-1. Scaffold project (Vite + React + TS)
-2. Build API layer (`fetchRandomPokemon`, response mapper)
-3. Build static UI with hardcoded fake data
-4. Wire up real data fetching via `usePokemonRound`
-5. Add game logic (compare stats, update streak, end game)
-6. Polish the reveal (animation/delay)
-7. Add 2–3 stretch features
-8. Deploy + write README
+1. ✅ Scaffold project (Vite + React + TS)
+2. ✅ Build API layer (`fetchRandomPokemon`, response mapper)
+3. ✅ Build static UI with hardcoded fake data
+4. ✅ Wire up real data fetching via `usePokemonRound`
+5. ✅ Add game logic (compare stats, update streak, end game)
+6. ✅ Polish the reveal (animation/delay)
+7. [ ] Add 2–3 stretch features
+8. [ ] Deploy + write README (README done — deploy pending)
 
 ---
 
 ## 8. Open Questions / Decisions to Revisit
 
 - Which stat(s) to include by default — all six, or a curated subset?
+  → **Decided:** compare Attack only for the MVP; revisit when adding the
+  "random stat each round" stretch goal.
 - Should sprite be static front-facing image or animated (if available)?
+  → **Decided:** static `front_default` sprite.
 - Exact ID range to pull from (avoid Pokémon with missing sprites/data)?
+  → **Decided:** IDs 1–1025 (matches PokeAPI's current dataset); random picks
+  are re-rolled until the two Pokémon and their Attack values differ.
