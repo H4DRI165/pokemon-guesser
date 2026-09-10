@@ -4,11 +4,8 @@ import StreakCounter from './components/StreakCounter'
 import GameOverModal from './components/GameOverModal'
 import { usePokemonRound } from './hooks/usePokemonRound'
 
-const STAT_LABEL = 'Attack'
-const STAT_KEY = 'attack'
-
 function App() {
-  const { pokemonA, pokemonB, loading, error, nextRound } = usePokemonRound()
+  const { pokemonA, pokemonB, statKey, statLabel, loading, error, nextRound } = usePokemonRound()
   const [score, setScore] = useState({ streak: 0, best: 0 })
   const [gameOver, setGameOver] = useState(false)
   const [loserName, setLoserName] = useState<string>()
@@ -47,7 +44,7 @@ function App() {
 
       <div className="prompt">
         <span className="text">Who has the higher</span>
-        <span className="stat-pill">{STAT_LABEL}</span>
+        <span className="stat-pill">{statLabel}</span>
         <span className="text">?</span>
       </div>
 
@@ -59,8 +56,8 @@ function App() {
         <GameBoard
           pokemonA={pokemonA}
           pokemonB={pokemonB}
-          statLabel={STAT_LABEL}
-          statKey={STAT_KEY}
+          statLabel={statLabel}
+          statKey={statKey}
           onCorrect={handleCorrect}
           onWrong={handleWrong}
           onNextRound={nextRound}
@@ -70,7 +67,7 @@ function App() {
       <GameOverModal
         open={gameOver}
         loserName={loserName}
-        statLabel={STAT_LABEL}
+        statLabel={statLabel}
         streak={score.streak}
         best={score.best}
         onPlayAgain={playAgain}
