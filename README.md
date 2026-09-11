@@ -19,13 +19,13 @@ data fetching, and clean typing of external API data.
 
 ## Tech Stack
 
-| Layer    | Choice                             |
-|----------|------------------------------------|
-| Build    | Vite (`react-ts` template)         |
-| Language | TypeScript (strict)                |
-| UI       | React (function components + hooks)|
-| Styling  | Plain CSS (`src/index.css`)        |
-| Data     | PokeAPI (no auth / API key needed) |
+| Layer    | Choice                              |
+| -------- | ----------------------------------- |
+| Build    | Vite (`react-ts` template)          |
+| Language | TypeScript (strict)                 |
+| UI       | React (function components + hooks) |
+| Styling  | Plain CSS (`src/index.css`)         |
+| Data     | PokeAPI (no auth / API key needed)  |
 
 ## Getting Started
 
@@ -38,12 +38,14 @@ No environment variables or API keys are required — PokeAPI is fully public.
 
 ## Scripts
 
-| Command            | Description                     |
-|--------------------|---------------------------------|
-| `npm run dev`      | Start the Vite dev server       |
-| `npm run build`    | Type-check and build for prod   |
-| `npm run preview`  | Preview the production build    |
-| `npm run lint`     | Run ESLint                      |
+| Command                | Description                      |
+| ---------------------- | -------------------------------- |
+| `npm run dev`          | Start the Vite dev server        |
+| `npm run build`        | Type-check and build for prod    |
+| `npm run preview`      | Preview the production build     |
+| `npm run lint`         | Run ESLint                       |
+| `npm run format`       | Format all files with Prettier   |
+| `npm run format:check` | Check formatting without writing |
 
 ## Project Structure
 

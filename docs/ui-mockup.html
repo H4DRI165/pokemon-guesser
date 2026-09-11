@@ -21,11 +21,20 @@
         --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
       }
 
-      * { box-sizing: border-box; }
+      * {
+        box-sizing: border-box;
+      }
 
       body {
         margin: 0;
-        font-family: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+        font-family:
+          'Segoe UI',
+          system-ui,
+          -apple-system,
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif;
         color: var(--text);
         background: var(--bg);
         background-image: var(--bg-grad);
@@ -49,7 +58,11 @@
         flex-wrap: wrap;
       }
 
-      .logo { display: flex; align-items: center; gap: 12px; }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
 
       .logo .ball {
         width: 40px;
@@ -59,17 +72,17 @@
         border: 2px solid var(--text);
         position: relative;
         flex-shrink: 0;
-        box-shadow: inset 0 -6px 0 rgba(0,0,0,0.15);
+        box-shadow: inset 0 -6px 0 rgba(0, 0, 0, 0.15);
       }
       .logo .ball::after {
-        content: "";
+        content: '';
         position: absolute;
         inset: 50% -4px auto -4px;
         height: 3px;
         background: var(--text);
       }
       .logo .ball::before {
-        content: "";
+        content: '';
         position: absolute;
         width: 11px;
         height: 11px;
@@ -82,8 +95,16 @@
         z-index: 1;
       }
 
-      .logo h1 { font-size: 20px; margin: 0; letter-spacing: 0.2px; }
-      .logo p { margin: 0; font-size: 12px; color: var(--muted); }
+      .logo h1 {
+        font-size: 20px;
+        margin: 0;
+        letter-spacing: 0.2px;
+      }
+      .logo p {
+        margin: 0;
+        font-size: 12px;
+        color: var(--muted);
+      }
 
       .streak {
         display: flex;
@@ -94,9 +115,18 @@
         border-radius: 999px;
         padding: 8px 16px;
       }
-      .streak .flame { font-size: 18px; }
-      .streak .value { font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; }
-      .streak .best { font-size: 12px; color: var(--muted); }
+      .streak .flame {
+        font-size: 18px;
+      }
+      .streak .value {
+        font-size: 22px;
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+      }
+      .streak .best {
+        font-size: 12px;
+        color: var(--muted);
+      }
 
       /* ---------- Question banner ---------- */
       .prompt {
@@ -118,7 +148,9 @@
         padding: 5px 14px;
         border-radius: 999px;
       }
-      .prompt .text { font-size: 18px; }
+      .prompt .text {
+        font-size: 18px;
+      }
 
       /* ---------- Cards ---------- */
       .matchup {
@@ -154,12 +186,15 @@
         align-items: center;
         gap: 10px;
         cursor: pointer;
-        transition: transform 0.15s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        transition:
+          transform 0.15s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
         overflow: hidden;
         user-select: none;
       }
       .card::before {
-        content: "";
+        content: '';
         position: absolute;
         inset: 0 0 auto;
         height: 6px;
@@ -167,26 +202,37 @@
         opacity: 0;
         transition: opacity 0.2s ease;
       }
-      .card:hover { transform: translateY(-4px); border-color: var(--yellow); }
-      .card:hover::before { opacity: 1; }
-      .card:active { transform: translateY(-1px) scale(0.99); }
+      .card:hover {
+        transform: translateY(-4px);
+        border-color: var(--yellow);
+      }
+      .card:hover::before {
+        opacity: 1;
+      }
+      .card:active {
+        transform: translateY(-1px) scale(0.99);
+      }
 
       .card .sprite-wrap {
         width: 150px;
         height: 150px;
         display: grid;
         place-items: center;
-        background: radial-gradient(circle at 50% 40%, rgba(255,255,255,0.06), transparent 70%);
+        background: radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.06), transparent 70%);
         border-radius: 50%;
       }
       .card img {
         width: 130px;
         height: 130px;
         image-rendering: pixelated;
-        filter: drop-shadow(0 6px 12px rgba(0,0,0,0.5));
-        transition: filter 0.2s ease, transform 0.2s ease;
+        filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.5));
+        transition:
+          filter 0.2s ease,
+          transform 0.2s ease;
       }
-      .card:hover img { transform: scale(1.06); }
+      .card:hover img {
+        transform: scale(1.06);
+      }
       .card .sprite-fallback {
         width: 130px;
         height: 130px;
@@ -194,8 +240,17 @@
         place-items: center;
         font-size: 60px;
       }
-      .card .name { font-size: 20px; font-weight: 700; text-transform: capitalize; }
-      .card .id-tag { font-size: 12px; color: var(--muted); font-weight: 600; letter-spacing: 0.5px; }
+      .card .name {
+        font-size: 20px;
+        font-weight: 700;
+        text-transform: capitalize;
+      }
+      .card .id-tag {
+        font-size: 12px;
+        color: var(--muted);
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
 
       /* stat readout */
       .card .stat-row {
@@ -250,40 +305,83 @@
         padding: 6px 14px;
         border-radius: 999px;
       }
-      .verdict.correct { background: var(--green); color: #04280f; }
-      .verdict.wrong { background: var(--red); color: #2b0207; }
+      .verdict.correct {
+        background: var(--green);
+        color: #04280f;
+      }
+      .verdict.wrong {
+        background: var(--red);
+        color: #2b0207;
+      }
 
       /* revealed states */
-      .card.revealed { cursor: default; }
-      .card.revealed:hover { transform: none; border-color: var(--border); }
-      .card.revealed:hover::before { opacity: 0; }
-      .card.revealed:hover img { transform: none; }
-      .card.locked { cursor: pointer; }
-      .card.locked:hover { transform: translateY(-4px); border-color: var(--yellow); }
-      .card.locked:hover::before { opacity: 1; }
-      .card.locked:hover img { transform: scale(1.06); }
+      .card.revealed {
+        cursor: default;
+      }
+      .card.revealed:hover {
+        transform: none;
+        border-color: var(--border);
+      }
+      .card.revealed:hover::before {
+        opacity: 0;
+      }
+      .card.revealed:hover img {
+        transform: none;
+      }
+      .card.locked {
+        cursor: pointer;
+      }
+      .card.locked:hover {
+        transform: translateY(-4px);
+        border-color: var(--yellow);
+      }
+      .card.locked:hover::before {
+        opacity: 1;
+      }
+      .card.locked:hover img {
+        transform: scale(1.06);
+      }
 
       .card.correct-card {
         border-color: var(--green);
-        box-shadow: 0 0 0 1px var(--green), 0 8px 26px rgba(47, 208, 122, 0.25);
+        box-shadow:
+          0 0 0 1px var(--green),
+          0 8px 26px rgba(47, 208, 122, 0.25);
         animation: pulse-green 0.6s ease;
       }
       .card.wrong-card {
         border-color: var(--red);
-        box-shadow: 0 0 0 1px var(--red), 0 8px 26px rgba(255, 59, 78, 0.25);
+        box-shadow:
+          0 0 0 1px var(--red),
+          0 8px 26px rgba(255, 59, 78, 0.25);
         animation: shake 0.45s ease;
       }
 
       @keyframes pulse-green {
-        0% { box-shadow: 0 0 0 0 rgba(47, 208, 122, 0.7); }
-        100% { box-shadow: 0 0 0 18px rgba(47, 208, 122, 0); }
+        0% {
+          box-shadow: 0 0 0 0 rgba(47, 208, 122, 0.7);
+        }
+        100% {
+          box-shadow: 0 0 0 18px rgba(47, 208, 122, 0);
+        }
       }
       @keyframes shake {
-        0%, 100% { transform: translateX(0); }
-        20% { transform: translateX(-8px); }
-        40% { transform: translateX(8px); }
-        60% { transform: translateX(-5px); }
-        80% { transform: translateX(5px); }
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        20% {
+          transform: translateX(-8px);
+        }
+        40% {
+          transform: translateX(8px);
+        }
+        60% {
+          transform: translateX(-5px);
+        }
+        80% {
+          transform: translateX(5px);
+        }
       }
 
       /* ---------- Game over modal ---------- */
@@ -298,7 +396,10 @@
         padding: 20px;
         z-index: 10;
       }
-      .overlay.show { display: flex; animation: fade 0.25s ease; }
+      .overlay.show {
+        display: flex;
+        animation: fade 0.25s ease;
+      }
 
       .modal {
         background: var(--surface);
@@ -311,20 +412,50 @@
         box-shadow: var(--shadow);
         animation: pop 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.2);
       }
-      .modal .big-ball { font-size: 64px; line-height: 1; margin-bottom: 8px; }
-      .modal h2 { font-size: 30px; margin: 8px 0 4px; }
-      .modal .sub { color: var(--muted); margin: 0 0 22px; }
-      .modal .sub .loser-name { color: var(--red); text-transform: capitalize; font-weight: 700; }
-      .modal .scores { display: flex; gap: 14px; margin: 0 auto 26px; max-width: 260px; }
+      .modal .big-ball {
+        font-size: 64px;
+        line-height: 1;
+        margin-bottom: 8px;
+      }
+      .modal h2 {
+        font-size: 30px;
+        margin: 8px 0 4px;
+      }
+      .modal .sub {
+        color: var(--muted);
+        margin: 0 0 22px;
+      }
+      .modal .sub .loser-name {
+        color: var(--red);
+        text-transform: capitalize;
+        font-weight: 700;
+      }
+      .modal .scores {
+        display: flex;
+        gap: 14px;
+        margin: 0 auto 26px;
+        max-width: 260px;
+      }
       .score-box {
         flex: 1;
         background: var(--surface-2);
         border-radius: 14px;
         padding: 12px;
       }
-      .score-box .n { font-size: 30px; font-weight: 800; line-height: 1.1; }
-      .score-box .l { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
-      .score-box.highlight .n { color: var(--yellow); }
+      .score-box .n {
+        font-size: 30px;
+        font-weight: 800;
+        line-height: 1.1;
+      }
+      .score-box .l {
+        font-size: 11px;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .score-box.highlight .n {
+        color: var(--yellow);
+      }
 
       .btn {
         border: none;
@@ -336,14 +467,28 @@
         background: var(--red);
         color: #fff;
         box-shadow: 0 6px 18px rgba(255, 59, 78, 0.35);
-        transition: transform 0.12s ease, filter 0.15s ease;
+        transition:
+          transform 0.12s ease,
+          filter 0.15s ease;
       }
-      .btn:hover { filter: brightness(1.1); transform: translateY(-2px); }
-      .btn:active { transform: translateY(0); }
+      .btn:hover {
+        filter: brightness(1.1);
+        transform: translateY(-2px);
+      }
+      .btn:active {
+        transform: translateY(0);
+      }
 
-      @keyframes fade { from { opacity: 0; } }
+      @keyframes fade {
+        from {
+          opacity: 0;
+        }
+      }
       @keyframes pop {
-        from { opacity: 0; transform: scale(0.85) translateY(10px); }
+        from {
+          opacity: 0;
+          transform: scale(0.85) translateY(10px);
+        }
       }
 
       /* ---------- footer ---------- */
@@ -357,7 +502,9 @@
         font-size: 13px;
         line-height: 1.5;
       }
-      .hint b { color: var(--text); }
+      .hint b {
+        color: var(--text);
+      }
       .hint kbd {
         background: var(--surface-2);
         border: 1px solid var(--border);
@@ -368,7 +515,12 @@
         font-size: 12px;
         color: var(--text);
       }
-      .hint .actions { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
+      .hint .actions {
+        margin-top: 10px;
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
       .chip-btn {
         background: var(--surface-2);
         color: var(--text);
@@ -381,7 +533,9 @@
         cursor: pointer;
         transition: border-color 0.15s ease;
       }
-      .chip-btn:hover { border-color: var(--yellow); }
+      .chip-btn:hover {
+        border-color: var(--yellow);
+      }
 
       .status-line {
         margin-top: 18px;
@@ -398,14 +552,31 @@
         padding: 3px 10px;
         border-radius: 999px;
       }
-      .tag.mode { background: var(--surface-2); color: var(--yellow); }
+      .tag.mode {
+        background: var(--surface-2);
+        color: var(--yellow);
+      }
 
       /* ---------- responsive ---------- */
       @media (max-width: 700px) {
-        .matchup { grid-template-columns: 1fr; gap: 12px; }
-        .vs { width: 44px; height: 44px; font-size: 20px; margin: 0 auto; }
-        .card .sprite-wrap { width: 120px; height: 120px; }
-        .card img { width: 105px; height: 105px; }
+        .matchup {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+        .vs {
+          width: 44px;
+          height: 44px;
+          font-size: 20px;
+          margin: 0 auto;
+        }
+        .card .sprite-wrap {
+          width: 120px;
+          height: 120px;
+        }
+        .card img {
+          width: 105px;
+          height: 105px;
+        }
       }
     </style>
   </head>
@@ -441,12 +612,11 @@
       </div>
 
       <div class="hint">
-        <b>This is a design mockup</b> — numbers are fake so you can preview
-        every state before wiring up React. Click a card to guess. Get it right
-        to grow your streak; get it wrong (or hit “Game over”) to see the loss
-        state + modal. Press <kbd>R</kbd> for a new round. Sprites load from
-        PokeAPI (needs internet); offline they fall back to a placeholder so the
-        layout still previews.
+        <b>This is a design mockup</b> — numbers are fake so you can preview every state before
+        wiring up React. Click a card to guess. Get it right to grow your streak; get it wrong (or
+        hit “Game over”) to see the loss state + modal. Press <kbd>R</kbd> for a new round. Sprites
+        load from PokeAPI (needs internet); offline they fall back to a placeholder so the layout
+        still previews.
         <div class="actions">
           <button class="chip-btn" id="btnRound" type="button">🔄 New round</button>
           <button class="chip-btn" id="btnWrong" type="button">❌ Guess wrong</button>
@@ -460,10 +630,18 @@
       <div class="modal">
         <div class="big-ball">💥</div>
         <h2>Game over!</h2>
-        <p class="sub"><span class="loser-name" id="overLoser"></span> doesn’t have the higher stat.</p>
+        <p class="sub">
+          <span class="loser-name" id="overLoser"></span> doesn’t have the higher stat.
+        </p>
         <div class="scores">
-          <div class="score-box"><div class="n" id="overStreak">0</div><div class="l">Streak</div></div>
-          <div class="score-box highlight"><div class="n" id="overBest">0</div><div class="l">Best</div></div>
+          <div class="score-box">
+            <div class="n" id="overStreak">0</div>
+            <div class="l">Streak</div>
+          </div>
+          <div class="score-box highlight">
+            <div class="n" id="overBest">0</div>
+            <div class="l">Best</div>
+          </div>
         </div>
         <button class="btn" id="btnPlayAgain" type="button">Play again</button>
       </div>
@@ -474,35 +652,75 @@
       // Mock data — pretend rounds. winner = 0 (left card) or 1 (right card)
       // ---------------------------------------------------------------------
       const ROUNDS = [
-        { stat: 'attack',  a: { id: 6,   name: 'charizard', value: 84  }, b: { id: 9,   name: 'blastoise', value: 83  }, winner: 0 },
-        { stat: 'hp',      a: { id: 143, name: 'snorlax',   value: 160 }, b: { id: 131, name: 'lapras',   value: 130 }, winner: 0 },
-        { stat: 'speed',   a: { id: 25,  name: 'pikachu',   value: 90  }, b: { id: 149, name: 'dragonite', value: 80 }, winner: 0 },
-        { stat: 'attack',  a: { id: 94,  name: 'gengar',    value: 65  }, b: { id: 130, name: 'gyarados', value: 125 }, winner: 1 },
-        { stat: 'defense', a: { id: 91,  name: 'cloyster',  value: 180 }, b: { id: 112, name: 'rhydon',   value: 120 }, winner: 0 },
-        { stat: 'hp',      a: { id: 3,   name: 'venusaur',  value: 80  }, b: { id: 6,   name: 'charizard', value: 78  }, winner: 0 },
-        { stat: 'speed',   a: { id: 65,  name: 'alakazam',  value: 120 }, b: { id: 94,  name: 'gengar',   value: 110 }, winner: 0 },
-        { stat: 'attack',  a: { id: 68,  name: 'machamp',   value: 130 }, b: { id: 59,  name: 'arcanine', value: 110 }, winner: 0 },
-      ];
-      const MAX_STAT = 255; // bar scale
+        {
+          stat: 'attack',
+          a: { id: 6, name: 'charizard', value: 84 },
+          b: { id: 9, name: 'blastoise', value: 83 },
+          winner: 0,
+        },
+        {
+          stat: 'hp',
+          a: { id: 143, name: 'snorlax', value: 160 },
+          b: { id: 131, name: 'lapras', value: 130 },
+          winner: 0,
+        },
+        {
+          stat: 'speed',
+          a: { id: 25, name: 'pikachu', value: 90 },
+          b: { id: 149, name: 'dragonite', value: 80 },
+          winner: 0,
+        },
+        {
+          stat: 'attack',
+          a: { id: 94, name: 'gengar', value: 65 },
+          b: { id: 130, name: 'gyarados', value: 125 },
+          winner: 1,
+        },
+        {
+          stat: 'defense',
+          a: { id: 91, name: 'cloyster', value: 180 },
+          b: { id: 112, name: 'rhydon', value: 120 },
+          winner: 0,
+        },
+        {
+          stat: 'hp',
+          a: { id: 3, name: 'venusaur', value: 80 },
+          b: { id: 6, name: 'charizard', value: 78 },
+          winner: 0,
+        },
+        {
+          stat: 'speed',
+          a: { id: 65, name: 'alakazam', value: 120 },
+          b: { id: 94, name: 'gengar', value: 110 },
+          winner: 0,
+        },
+        {
+          stat: 'attack',
+          a: { id: 68, name: 'machamp', value: 130 },
+          b: { id: 59, name: 'arcanine', value: 110 },
+          winner: 0,
+        },
+      ]
+      const MAX_STAT = 255 // bar scale
 
-      const STAT_LABELS = { hp: 'HP', attack: 'Attack', defense: 'Defense', speed: 'Speed' };
+      const STAT_LABELS = { hp: 'HP', attack: 'Attack', defense: 'Defense', speed: 'Speed' }
       const spriteURL = (id) =>
-        `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+        `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
 
-      const state = { roundIndex: 0, streak: 0, best: 0, revealed: false };
-      const $ = (s) => document.querySelector(s);
-      const matchup = $('#matchup');
-      const overlay = $('#overlay');
-      const statusLine = $('#statusLine');
-      const label = (s) => STAT_LABELS[s] || s;
+      const state = { roundIndex: 0, streak: 0, best: 0, revealed: false }
+      const $ = (s) => document.querySelector(s)
+      const matchup = $('#matchup')
+      const overlay = $('#overlay')
+      const statusLine = $('#statusLine')
+      const label = (s) => STAT_LABELS[s] || s
 
       // ---------------------------------------------------------------------
       // Rendering
       // ---------------------------------------------------------------------
       function buildCard(mon, idx) {
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.dataset.idx = idx;
+        const card = document.createElement('div')
+        card.className = 'card'
+        card.dataset.idx = idx
         card.innerHTML = `
           <div class="sprite-wrap">
             <img class="sprite" alt="${mon.name}" draggable="false">
@@ -516,84 +734,84 @@
           </div>
           <div class="bar"><div class="fill"></div></div>
           <div class="verdict"></div>
-        `;
+        `
 
-        const img = card.querySelector('.sprite');
+        const img = card.querySelector('.sprite')
         img.onload = () => {
-          card.querySelector('.sprite-fallback').style.display = 'none';
-          img.style.display = 'block';
-        };
+          card.querySelector('.sprite-fallback').style.display = 'none'
+          img.style.display = 'block'
+        }
         img.onerror = () => {
-          img.style.display = 'none';
-          card.querySelector('.sprite-fallback').style.display = 'grid';
-        };
-        img.src = spriteURL(mon.id);
+          img.style.display = 'none'
+          card.querySelector('.sprite-fallback').style.display = 'grid'
+        }
+        img.src = spriteURL(mon.id)
 
-        card.addEventListener('click', () => guess(idx));
-        return card;
+        card.addEventListener('click', () => guess(idx))
+        return card
       }
 
       function renderRound() {
-        const round = ROUNDS[state.roundIndex % ROUNDS.length];
-        $('#statLabel').textContent = label(round.stat);
-        matchup.innerHTML = '';
+        const round = ROUNDS[state.roundIndex % ROUNDS.length]
+        $('#statLabel').textContent = label(round.stat)
+        matchup.innerHTML = ''
 
-        const cards = [round.a, round.b].map((mon, i) => buildCard(mon, i));
+        const cards = [round.a, round.b].map((mon, i) => buildCard(mon, i))
         cards.forEach((c) => {
-          c.querySelector('[data-label]').textContent = label(round.stat);
-        });
+          c.querySelector('[data-label]').textContent = label(round.stat)
+        })
 
-        const vs = document.createElement('div');
-        vs.className = 'vs';
-        vs.textContent = 'VS';
-        matchup.append(cards[0], vs, cards[1]);
+        const vs = document.createElement('div')
+        vs.className = 'vs'
+        vs.textContent = 'VS'
+        matchup.append(cards[0], vs, cards[1])
 
-        state.revealed = false;
-        const n = (state.roundIndex % ROUNDS.length) + 1;
-        setStatus(`Round ${n}/${ROUNDS.length} · higher ${label(round.stat)} wins · click a card`);
+        state.revealed = false
+        const n = (state.roundIndex % ROUNDS.length) + 1
+        setStatus(`Round ${n}/${ROUNDS.length} · higher ${label(round.stat)} wins · click a card`)
       }
 
       function revealCards() {
-        const round = ROUNDS[state.roundIndex % ROUNDS.length];
+        const round = ROUNDS[state.roundIndex % ROUNDS.length]
         matchup.querySelectorAll('.card').forEach((cardEl, i) => {
-          const mon = i === 0 ? round.a : round.b;
-          cardEl.classList.add('revealed');
-          const v = cardEl.querySelector('.value');
-          v.textContent = mon.value;
-          v.classList.remove('unknown');
+          const mon = i === 0 ? round.a : round.b
+          cardEl.classList.add('revealed')
+          const v = cardEl.querySelector('.value')
+          v.textContent = mon.value
+          v.classList.remove('unknown')
           requestAnimationFrame(() => {
-            cardEl.querySelector('.fill').style.width = (mon.value / MAX_STAT) * 100 + '%';
-          });
-        });
+            cardEl.querySelector('.fill').style.width = (mon.value / MAX_STAT) * 100 + '%'
+          })
+        })
       }
 
       function markWinner() {
-        const round = ROUNDS[state.roundIndex % ROUNDS.length];
-        const winnerEl = matchup.querySelectorAll('.card')[round.winner];
-        winnerEl.classList.add('correct-card');
-        const verdict = winnerEl.querySelector('.verdict');
-        verdict.classList.add('correct');
-        verdict.textContent = 'Correct!';
-        verdict.style.display = 'inline-block';
+        const round = ROUNDS[state.roundIndex % ROUNDS.length]
+        const winnerEl = matchup.querySelectorAll('.card')[round.winner]
+        winnerEl.classList.add('correct-card')
+        const verdict = winnerEl.querySelector('.verdict')
+        verdict.classList.add('correct')
+        verdict.textContent = 'Correct!'
+        verdict.style.display = 'inline-block'
       }
 
       function markLoss(pickedIdx) {
-        const round = ROUNDS[state.roundIndex % ROUNDS.length];
-        const els = matchup.querySelectorAll('.card');
-        const pickedEl = els[pickedIdx];
-        pickedEl.classList.add('wrong-card');
-        const verdict = pickedEl.querySelector('.verdict');
-        verdict.classList.add('wrong');
-        verdict.textContent = 'Your pick';
-        verdict.style.display = 'inline-block';
+        const round = ROUNDS[state.roundIndex % ROUNDS.length]
+        const els = matchup.querySelectorAll('.card')
+        const pickedEl = els[pickedIdx]
+        pickedEl.classList.add('wrong-card')
+        const verdict = pickedEl.querySelector('.verdict')
+        verdict.classList.add('wrong')
+        verdict.textContent = 'Your pick'
+        verdict.style.display = 'inline-block'
 
         if (round.winner !== pickedIdx) {
-          const winnerEl = els[round.winner];
-          winnerEl.classList.add('correct-card');
-          const wv = winnerEl.querySelector('.verdict');
-          wv.classList.add('correct');
-          wv.textContent = 'Higher!';
-          wv.style.display = 'inline-block';
+          const winnerEl = els[round.winner]
+          winnerEl.classList.add('correct-card')
+          const wv = winnerEl.querySelector('.verdict')
+          wv.classList.add('correct')
+          wv.textContent = 'Higher!'
+          wv.style.display = 'inline-block'
         }
       }
 
@@ -601,81 +819,81 @@
       // Game logic (mocked — reveal + outcome only)
       // ---------------------------------------------------------------------
       function guess(pickedIdx) {
-        if (state.revealed) return;
-        const round = ROUNDS[state.roundIndex % ROUNDS.length];
-        state.revealed = true;
-        revealCards();
+        if (state.revealed) return
+        const round = ROUNDS[state.roundIndex % ROUNDS.length]
+        state.revealed = true
+        revealCards()
 
         if (pickedIdx === round.winner) {
           // win → bump streak, offer next round
-          state.streak += 1;
-          state.best = Math.max(state.best, state.streak);
-          updateScoreUI();
-          markWinner();
+          state.streak += 1
+          state.best = Math.max(state.best, state.streak)
+          updateScoreUI()
+          markWinner()
           matchup.querySelectorAll('.card').forEach((c) => {
-            c.classList.add('locked');
-            c.addEventListener('click', () => nextRound(), { once: true });
-          });
-          setStatus('Correct! +1 streak · click anywhere to continue');
+            c.classList.add('locked')
+            c.addEventListener('click', () => nextRound(), { once: true })
+          })
+          setStatus('Correct! +1 streak · click anywhere to continue')
         } else {
           // loss → reset streak, show modal
-          endRun(pickedIdx);
+          endRun(pickedIdx)
         }
       }
 
       function forceLoss() {
-        if (state.revealed) return;
-        const round = ROUNDS[state.roundIndex % ROUNDS.length];
-        state.revealed = true;
-        revealCards();
-        endRun(round.winner === 0 ? 1 : 0);
+        if (state.revealed) return
+        const round = ROUNDS[state.roundIndex % ROUNDS.length]
+        state.revealed = true
+        revealCards()
+        endRun(round.winner === 0 ? 1 : 0)
       }
 
       function endRun(pickedIdx) {
-        const round = ROUNDS[state.roundIndex % ROUNDS.length];
-        const loserName = (pickedIdx === 0 ? round.a : round.b).name;
-        state.streak = 0;
-        updateScoreUI();
-        markLoss(pickedIdx);
-        showGameOver(loserName);
+        const round = ROUNDS[state.roundIndex % ROUNDS.length]
+        const loserName = (pickedIdx === 0 ? round.a : round.b).name
+        state.streak = 0
+        updateScoreUI()
+        markLoss(pickedIdx)
+        showGameOver(loserName)
       }
 
       function showGameOver(loserName) {
-        $('#overStreak').textContent = state.streak;
-        $('#overBest').textContent = state.best;
-        $('#overLoser').textContent = loserName;
-        overlay.classList.add('show');
+        $('#overStreak').textContent = state.streak
+        $('#overBest').textContent = state.best
+        $('#overLoser').textContent = loserName
+        overlay.classList.add('show')
       }
 
       // ---------------------------------------------------------------------
       // Wiring / helpers
       // ---------------------------------------------------------------------
       function nextRound() {
-        overlay.classList.remove('show');
-        state.roundIndex += 1;
-        renderRound();
+        overlay.classList.remove('show')
+        state.roundIndex += 1
+        renderRound()
       }
 
       function updateScoreUI() {
-        $('#streak').textContent = state.streak;
-        $('#best').textContent = state.best;
+        $('#streak').textContent = state.streak
+        $('#best').textContent = state.best
       }
 
       function setStatus(msg) {
-        statusLine.innerHTML = `<span class="tag mode">${msg}</span>`;
+        statusLine.innerHTML = `<span class="tag mode">${msg}</span>`
       }
 
-      $('#btnRound').addEventListener('click', nextRound);
-      $('#btnWrong').addEventListener('click', forceLoss);
-      $('#btnOver').addEventListener('click', forceLoss);
-      $('#btnPlayAgain').addEventListener('click', nextRound);
+      $('#btnRound').addEventListener('click', nextRound)
+      $('#btnWrong').addEventListener('click', forceLoss)
+      $('#btnOver').addEventListener('click', forceLoss)
+      $('#btnPlayAgain').addEventListener('click', nextRound)
 
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'r' || e.key === 'R') nextRound();
-      });
+        if (e.key === 'r' || e.key === 'R') nextRound()
+      })
 
-      updateScoreUI();
-      renderRound();
+      updateScoreUI()
+      renderRound()
     </script>
   </body>
 </html>

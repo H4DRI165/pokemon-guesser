@@ -24,21 +24,22 @@ its layout/theme when building the static UI.
 
 ## 2. Tech Stack
 
-| Layer      | Choice                          | Notes                                  |
-|------------|----------------------------------|-----------------------------------------|
-| Build tool | Vite                             | `react-ts` template                     |
-| Language   | TypeScript                       | strict mode on                          |
-| UI         | React 19 (function components)   | hooks only, no class components         |
-| Styling    | Plain CSS (`src/index.css`)      | swap for Tailwind if preferred          |
-| Data       | [PokeAPI](https://pokeapi.co/)   | free, no auth, no rate-limit key needed |
-| Storage    | `localStorage`                   | high score persistence (stretch goal)   |
-| Hosting    | Vercel or Netlify                | free static hosting                     |
+| Layer      | Choice                         | Notes                                   |
+| ---------- | ------------------------------ | --------------------------------------- |
+| Build tool | Vite                           | `react-ts` template                     |
+| Language   | TypeScript                     | strict mode on                          |
+| UI         | React 19 (function components) | hooks only, no class components         |
+| Styling    | Plain CSS (`src/index.css`)    | swap for Tailwind if preferred          |
+| Data       | [PokeAPI](https://pokeapi.co/) | free, no auth, no rate-limit key needed |
+| Storage    | `localStorage`                 | high score persistence (stretch goal)   |
+| Hosting    | Vercel or Netlify              | free static hosting                     |
 
 ---
 
 ## 3. Features
 
 ### MVP (must ship) — ✅ done
+
 - [x] Fetch two random Pokémon on load
 - [x] Display each Pokémon's sprite, name, and (initially hidden) stat
 - [x] Player clicks a card to guess "higher"
@@ -47,6 +48,7 @@ its layout/theme when building the static UI.
 - [x] Game-over state on wrong guess, with a restart button
 
 ### Stretch goals (pick 2–3 after MVP works)
+
 - [ ] Persist high score in `localStorage`
 - [x] Randomize which stat is compared each round
 - [x] Reveal animation / transition (framer-motion or CSS)
@@ -55,6 +57,7 @@ its layout/theme when building the static UI.
 - [ ] Shareable result ("I got a streak of 12!")
 
 ### Explicitly out of scope (for now)
+
 - User accounts / login
 - Multiplayer
 - Backend server of any kind
@@ -69,6 +72,7 @@ its layout/theme when building the static UI.
 on PokeAPI docs — the dataset grows over time).
 
 Relevant fields from the raw response:
+
 ```json
 {
   "id": 6,
@@ -83,12 +87,13 @@ Relevant fields from the raw response:
 
 **App-level type** (what the raw response gets mapped into — keeps
 components decoupled from PokeAPI's shape):
+
 ```typescript
 interface Pokemon {
-  id: number;
-  name: string;
-  sprite: string;
-  stats: Record<string, number>; // e.g. { hp: 78, attack: 84 }
+  id: number
+  name: string
+  sprite: string
+  stats: Record<string, number> // e.g. { hp: 78, attack: 84 }
 }
 ```
 
