@@ -49,7 +49,7 @@ its layout/theme when building the static UI.
 ### Stretch goals (pick 2–3 after MVP works)
 - [ ] Persist high score in `localStorage`
 - [x] Randomize which stat is compared each round
-- [ ] Reveal animation / transition (framer-motion or CSS)
+- [x] Reveal animation / transition (framer-motion or CSS)
 - [ ] Difficulty modes (narrow vs. wide Pokémon ID range)
 - [ ] Sound effects on correct/incorrect guess
 - [ ] Shareable result ("I got a streak of 12!")
