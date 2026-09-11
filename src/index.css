@@ -282,6 +282,27 @@ body {
   font-size: 22px;
 }
 
+.value.counted {
+  color: var(--text);
+  animation: value-pop 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.4);
+}
+
+@keyframes value-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
 .bar {
   width: 100%;
   height: 10px;
@@ -300,13 +321,26 @@ body {
 
 /* result banner inside card */
 .verdict {
-  display: none;
+  display: inline-block;
   font-size: 13px;
   font-weight: 800;
   letter-spacing: 0.8px;
   text-transform: uppercase;
   padding: 6px 14px;
   border-radius: 999px;
+  animation: verdict-in 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.3) both;
+}
+
+@keyframes verdict-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .verdict.correct {
@@ -333,8 +367,26 @@ body {
   opacity: 0;
 }
 
+.card.revealed img {
+  animation: sprite-pop 0.4s ease;
+}
+
 .card.revealed:hover img {
   transform: none;
+}
+
+@keyframes sprite-pop {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 .card.locked {
@@ -613,5 +665,26 @@ body {
   .card img {
     width: 105px;
     height: 105px;
+  }
+}
+
+/* ---------- reveal stagger ---------- */
+.matchup .card:nth-child(1) .value.counted {
+  animation-delay: 0s;
+}
+
+.matchup .card:nth-child(3) .value.counted {
+  animation-delay: 0.12s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .card,
+  .card img,
+  .bar .fill,
+  .value.counted,
+  .verdict {
+    animation: none !important;
+    transition: none !important;
   }
 }
