@@ -1,4 +1,5 @@
 import type { Pokemon } from '../types/pokemon';
+import { useCountUp } from '../hooks/useCountUp';
 
 const MAX_STAT = 255
 
@@ -15,6 +16,7 @@ interface Props {
 
 function PokemonCard({ pokemon, statLabel, statKey, revealed, correct, picked, onGuess, onContinue }: Props) {
     const value = pokemon.stats[statKey]
+    const shown = useCountUp(value, revealed)
 
     const actionable = !revealed ? onGuess : onContinue
 
@@ -39,11 +41,7 @@ function PokemonCard({ pokemon, statLabel, statKey, revealed, correct, picked, o
             <div className="id-tag">#{String(pokemon.id).padStart(3, '0')}</div>
             <div className="stat-row">
                 <span className="label">{statLabel}</span>
-                {revealed ? (
-                    <span className="value">{value}</span>
-                ) : (
-                    <span className="value unknown">???</span>
-                )}
+                <span className={`value ${revealed ? 'counted' : 'unknown'}`}>{revealed ? shown : '???'}</span>
             </div>
             <div className="bar">
                 <div className="fill" style={{ width: revealed ? `${(value / MAX_STAT) * 100}%` : '0%' }} />
