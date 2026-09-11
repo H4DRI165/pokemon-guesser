@@ -24,21 +24,22 @@ its layout/theme when building the static UI.
 
 ## 2. Tech Stack
 
-| Layer      | Choice                          | Notes                                  |
-|------------|----------------------------------|-----------------------------------------|
-| Build tool | Vite                             | `react-ts` template                     |
-| Language   | TypeScript                       | strict mode on                          |
-| UI         | React 18 (function components)   | hooks only, no class components         |
-| Styling    | CSS Modules or plain CSS         | swap for Tailwind if preferred          |
-| Data       | [PokeAPI](https://pokeapi.co/)   | free, no auth, no rate-limit key needed |
-| Storage    | `localStorage`                   | high score persistence (stretch goal)   |
-| Hosting    | Vercel or Netlify                | free static hosting                     |
+| Layer      | Choice                         | Notes                                   |
+| ---------- | ------------------------------ | --------------------------------------- |
+| Build tool | Vite                           | `react-ts` template                     |
+| Language   | TypeScript                     | strict mode on                          |
+| UI         | React 19 (function components) | hooks only, no class components         |
+| Styling    | Plain CSS (`src/index.css`)    | swap for Tailwind if preferred          |
+| Data       | [PokeAPI](https://pokeapi.co/) | free, no auth, no rate-limit key needed |
+| Storage    | `localStorage`                 | high score persistence (stretch goal)   |
+| Hosting    | Vercel or Netlify              | free static hosting                     |
 
 ---
 
 ## 3. Features
 
 ### MVP (must ship) — ✅ done
+
 - [x] Fetch two random Pokémon on load
 - [x] Display each Pokémon's sprite, name, and (initially hidden) stat
 - [x] Player clicks a card to guess "higher"
@@ -47,6 +48,7 @@ its layout/theme when building the static UI.
 - [x] Game-over state on wrong guess, with a restart button
 
 ### Stretch goals (pick 2–3 after MVP works)
+
 - [ ] Persist high score in `localStorage`
 - [x] Randomize which stat is compared each round
 - [x] Reveal animation / transition (framer-motion or CSS)
@@ -55,6 +57,7 @@ its layout/theme when building the static UI.
 - [ ] Shareable result ("I got a streak of 12!")
 
 ### Explicitly out of scope (for now)
+
 - User accounts / login
 - Multiplayer
 - Backend server of any kind
@@ -65,10 +68,11 @@ its layout/theme when building the static UI.
 
 **Base URL:** `https://pokeapi.co/api/v2/`
 
-**Endpoint used:** `GET /pokemon/{id}` where `id` is 1–1010ish (check current
-max on PokeAPI docs — the dataset grows over time).
+**Endpoint used:** `GET /pokemon/{id}` where `id` is 1–1025 (check current max
+on PokeAPI docs — the dataset grows over time).
 
 Relevant fields from the raw response:
+
 ```json
 {
   "id": 6,
@@ -83,12 +87,13 @@ Relevant fields from the raw response:
 
 **App-level type** (what the raw response gets mapped into — keeps
 components decoupled from PokeAPI's shape):
+
 ```typescript
 interface Pokemon {
-  id: number;
-  name: string;
-  sprite: string;
-  stats: Record<string, number>; // e.g. { hp: 78, attack: 84 }
+  id: number
+  name: string
+  sprite: string
+  stats: Record<string, number> // e.g. { hp: 78, attack: 84 }
 }
 ```
 
@@ -111,8 +116,9 @@ src/
     GameOverModal.tsx
   hooks/
     usePokemonRound.ts   // returns { pokemonA, pokemonB, loading, error, nextRound }
+    useCountUp.ts        // animates a stat value from 0 when revealed
   types/
-    pokemon.ts            // Pokemon interface, raw API response types
+    pokemon.ts            // Pokemon interface
   App.tsx
   main.tsx
 ```
@@ -135,7 +141,7 @@ No environment variables or API keys needed — PokeAPI is fully public.
 ## 7. Build Order
 
 1. ✅ Scaffold project (Vite + React + TS)
-2. ✅ Build API layer (`fetchRandomPokemon`, response mapper)
+2. ✅ Build API layer (`fetchPokemon(id)`, response mapper)
 3. ✅ Build static UI with hardcoded fake data
 4. ✅ Wire up real data fetching via `usePokemonRound`
 5. ✅ Add game logic (compare stats, update streak, end game)
@@ -148,8 +154,8 @@ No environment variables or API keys needed — PokeAPI is fully public.
 ## 8. Open Questions / Decisions to Revisit
 
 - Which stat(s) to include by default — all six, or a curated subset?
-  → **Decided:** compare Attack only for the MVP; revisit when adding the
-  "random stat each round" stretch goal.
+  → **Decided:** compare a random stat each round from HP, Attack, Defense, and
+  Speed; re-roll until both Pokémon and their chosen stat value differ.
 - Should sprite be static front-facing image or animated (if available)?
   → **Decided:** static `front_default` sprite.
 - Exact ID range to pull from (avoid Pokémon with missing sprites/data)?
